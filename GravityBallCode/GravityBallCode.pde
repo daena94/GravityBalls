@@ -29,9 +29,11 @@ int i = 0;
 while (i < count) {
   //draw ball
   ellipse(x[i], y[i], diam[i], diam[i]);
-  fill(random(255), random(255), random(255));
 
 
+if (dist(x[i],y[i],mouseX,mouseY) < diam[i]/2){
+    fill(random(255), random(255), random(255));
+}
   //add velocity to position
   velY[i] = velY[i] + acc[i];
   y[i] += velY[i];
