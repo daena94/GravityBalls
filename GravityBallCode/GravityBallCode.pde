@@ -11,12 +11,14 @@ void setup() {
   size(800, 600);
   int i = 0;
   //initialize variables
-  while (1 < count) {
+  while (i < count) {
   y[i] = height/2;
   x[i] = random(0, width);
-  diam[i] = 80;
-  velY[i] = 10;
-  acc[i] = 1;
+  diam[i] = random(40,80);
+  velY[i] = random(5,15);
+  acc[i] = random(1,5);
+  
+  i++;
 
 }
 }
@@ -28,7 +30,7 @@ while (i < count) {
   //draw ball
   ellipse(x[i], y[i], diam[i], diam[i]);
   fill(random(255), random(255), random(255));
-}
+
 
   //add velocity to position
   velY[i] = velY[i] + acc[i];
@@ -41,4 +43,5 @@ while (i < count) {
   
   }
  i ++ ;
+}
 }
