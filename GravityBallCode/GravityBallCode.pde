@@ -1,35 +1,49 @@
 //declare variables
-float y, velY, diam,acc;
-
+int count = 30;
+//declare arrays
+float[] y = new float[count];
+float[] x = new float[count];
+float[] velY = new float[count];
+float[] diam = new float[count];
+float[] acc = new float[count];
 void setup() {
   //set size of canvas
   size(800, 600);
-  
+  int i = 0;
   //initialize variables
-  y = height/2;
-  diam = 80;
-  velY = 10;
-  acc = 1;
-}
+  while (i < count) {
+  y[i] = height/2;
+  x[i] = random(0, width);
+  diam[i] = random(40,80);
+  velY[i] = random(5,15);
+  acc[i] = random(1,5);
+  
+  i++;
 
+}
+}
 void draw() {
   //draw background to cover previous frame
   background(0);
-
+int i = 0;
+while (i < count) {
   //draw ball
-  ellipse(400, y, diam, diam);
-  fill(random(255), random(255), random(255));
+  ellipse(x[i], y[i], diam[i], diam[i]);
 
 
+if (dist(x[i],y[i],mouseX,mouseY) < diam[i]/2){
+    fill(random(255), random(255), random(255));
+}
   //add velocity to position
-  velY = velY + acc;
-  y += velY;
+  velY[i] = velY[i] + acc[i];
+  y[i] += velY[i];
 
 
-  if (y >= height) {
-    velY = -abs(velY);
-    y=height;
+  if (y[i] >= height) {
+    velY[i] = -abs(velY[i]);
+    y[i]=height;
   
   }
- 
+ i ++ ;
+}
 }
